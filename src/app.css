@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: orange;
+}
+
+.menu-button {
+  position: absolute;
+  z-index: 1;
+  top: 50px;
+  right: 70px;
+  border: 2px solid black;
+  padding: 10px 20px;
+  font-size: 24px;
+  font-weight: bolder;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    border: 2px solid blue;
+    background: blue;
+    color: white;
+  }
+}
