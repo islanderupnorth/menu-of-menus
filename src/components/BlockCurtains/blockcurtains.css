@@ -1,11 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Karla|Poppins:600');
 
-.falling-blocks {
-  /* opacity: 0.5; */
-}
-
 .ul {
-  position: absolute;
+  position: fixed;
+  top: 0;
   height: 100%;
   width: 100%;
   color: white;
@@ -13,6 +10,10 @@
   justify-content: space-between;
   list-style: none;
   height: 100%;
+
+  .li:last-child .background {
+    border-right: 0;
+  }
 }
 
 .li {
@@ -32,8 +33,10 @@
 
 .background {
   background: #1a284d;
+  background: #4742b2;
   width: 100%;
   height: 100%;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .can-hover {
@@ -42,23 +45,46 @@
 
   &:hover {
     background: #253867;
+    background: rgba(255, 255, 255, 0.05);
     cursor: pointer;
+
+    .arrow {
+      transform: translateX(5px);
+    }
+
+    .title:after {
+      width: 120%;
+    }
   }
 }
 
-.emoji {
-  font-size: 100px;
+.icon {
+  font-size: 60px;
 }
 
 .title {
+  position: relative;
   font-family: 'Poppins';
   margin-top: 30px;
   font-size: 32px;
+  color: white;
+
+  &:after {
+    transition: width 600ms;
+    content: '';
+    position: absolute;
+    top: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background: #f8bb3d;
+  }
 }
 
 .text {
   font-family: 'Karla';
-  margin-top: 8px;
+  margin-top: 25px;
   font-size: 12px;
   line-height: 2em;
   color: rgb(135, 153, 190);
@@ -68,5 +94,6 @@
 
 .arrow {
   margin-top: 25px;
-  font-size: 22px;
+  font-size: 30px;
+  transition: transform 300ms, color 300ms;
 }

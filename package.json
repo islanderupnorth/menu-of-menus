@@ -42,6 +42,9 @@
     "npm": ">=3"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@fortawesome/react-fontawesome": "^0.1.2",
     "classnames": "^2.2.6",
     "gsap": "^2.0.2",
     "lodash": "4.17.10",
@@ -49,7 +52,9 @@
     "react": "16.4.2",
     "react-dom": "16.4.2",
     "react-hot-loader": "4.3.4",
-    "react-pose": "^3.2.1"
+    "react-pose": "^3.2.1",
+    "react-scroll-percentage": "^2.0.0",
+    "scroll-into-view-if-needed": "^2.2.16"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"

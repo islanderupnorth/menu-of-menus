@@ -15,7 +15,7 @@ const backgroundProps = {
     y: '0%',
     transition: {
       type: 'spring',
-      stiffness: 200,
+      stiffness: 50,
       damping: 100,
     },
   },
@@ -23,7 +23,7 @@ const backgroundProps = {
     y: '-100%',
     transition: {
       type: 'spring',
-      stiffness: 200,
+      stiffness: 50,
       damping: 100,
     },
   },
@@ -31,17 +31,17 @@ const backgroundProps = {
 
 const cardProps = {
   open: {
-    y: -10,
+    // y: 0,
     opacity: 1,
-    transition: { duration: 300 },
+    transition: { duration: 1000 },
   },
   closed: {
-    y: -30,
+    // y: -150,
     opacity: 0,
-    transition: { duration: 200 },
+    transition: { duration: 1000 },
   },
 };
 
+export const Card = posed.div(cardProps);
 export const Grid = posed.ul(gridProps);
 export const Background = posed.div(backgroundProps);
-export const Card = posed.li(cardProps);
