@@ -13,8 +13,6 @@ const MenuButton = ({
   let buttonStyle;
   let text;
 
-  console.log(isMenuOpen);
-
   if (menuSelected === 'slidein') {
     buttonStyle = [
       isMenuSelected && style['show-menu-button'],

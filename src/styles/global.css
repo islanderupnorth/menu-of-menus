@@ -12,6 +12,7 @@ body {
   min-height: 100vh;
   min-width: 100vw;
   color: $white;
+  background-color: #191919;
 }
 
 ul {
@@ -19,14 +20,9 @@ ul {
 }
 
 .page {
-  padding-top: 13%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   background: #1372fb;
+  margin: 40px;
+  border-radius: 4px;
 }
 
 /* List */
@@ -36,7 +32,6 @@ ul {
   text-align: center;
 
   margin-top: 40vh;
-  margin-bottom: 200vh;
 }
 
 .menu {

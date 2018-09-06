@@ -1,6 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import SplitText from 'react-pose-text';
 import style from './intro.css';
+import KeyboardOnboarding from '../KeyboardOnboarding/KeyboardOnboarding';
 
 const charPoses = {
   exit: { opacity: 0, y: 4 },
@@ -11,17 +13,22 @@ const charPoses = {
   },
 };
 
-const Intro = () => (
-  <Fragment>
+const Intro = ({ onScrollTo }) => (
+  <section className={style.header}>
     <h1 className={style.welcome}>Welcome to</h1>
     <h1 className={style.title}>
       <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
         Menu of Menus
       </SplitText>
     </h1>
-    <p className={style.description}>Nothing like sleek menus</p>
+    <p className={style.description}>There is nothing like a sleek menu</p>
     <span className={style.emojis}>😍🤤</span>
-  </Fragment>
+    <KeyboardOnboarding onScrollTo={onScrollTo} />
+  </section>
 );
+
+Intro.propTypes = {
+  onScrollTo: PropTypes.func,
+};
 
 export default Intro;

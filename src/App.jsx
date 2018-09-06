@@ -90,7 +90,7 @@ class App extends Component {
 
   render() {
     const { menuSelected, menuOpen } = this.state;
-    console.log('menuOpen', menuOpen);
+
     return (
       <div className={style.page}>
         <MenuButton
@@ -99,7 +99,7 @@ class App extends Component {
           toggleMenu={this.onToggleMenu}
           isMenuOpen={menuOpen && true}
         />
-        <Intro />
+        <Intro onScrollTo={this.handleScrollTo} />
 
         <ul className={style['list-of-menus']}>
           {menus.map(menu => (
