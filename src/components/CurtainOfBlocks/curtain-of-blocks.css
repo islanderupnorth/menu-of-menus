@@ -1,15 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Karla|Poppins:600');
 
-.ul {
-  position: fixed;
-  top: 0;
+.curtain-of-blocks {
   height: 100%;
-  width: 100%;
   color: white;
   display: flex;
   justify-content: space-between;
   list-style: none;
-  height: 100%;
 
   .li:last-child .background {
     border-right: 0;
@@ -32,7 +28,6 @@
 }
 
 .background {
-  background: #1a284d;
   background: #4742b2;
   width: 100%;
   height: 100%;
@@ -44,16 +39,11 @@
   transform: translateY(-100);
 
   &:hover {
-    background: #253867;
     background: rgba(255, 255, 255, 0.05);
     cursor: pointer;
 
     .arrow {
       transform: translateX(5px);
-    }
-
-    .title:after {
-      width: 120%;
     }
   }
 }
@@ -68,18 +58,6 @@
   margin-top: 30px;
   font-size: 32px;
   color: white;
-
-  &:after {
-    transition: width 600ms;
-    content: '';
-    position: absolute;
-    top: 48px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0%;
-    height: 2px;
-    background: #f8bb3d;
-  }
 }
 
 .text {

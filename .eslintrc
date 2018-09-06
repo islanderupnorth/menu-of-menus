@@ -36,6 +36,8 @@
       }
     ],
     "no-return-as-sign": false,
+    "jsx-a11y/accessible-emoji": false,
+    "jsx-a11y/aria-role": false,
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",

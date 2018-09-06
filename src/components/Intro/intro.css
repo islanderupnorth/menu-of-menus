@@ -1,0 +1,26 @@
+.welcome,
+.title {
+  font-family: 'Playfair Display', serif;
+}
+
+.welcome {
+  font-size: 68px;
+  font-weight: 400;
+}
+
+.title {
+  font-size: 108px;
+  color: #fae935;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.description {
+  margin-top: 130px;
+  font-size: 18px;
+}
+
+.emojis {
+  margin-top: 10px;
+  font-size: 80px;
+}

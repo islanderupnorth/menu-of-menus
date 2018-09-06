@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+
+h2 {
+  color: $white;
+}
+
+p {
+  font-family: 'Lato';
+  letter-spacing: 0.05em;
+}

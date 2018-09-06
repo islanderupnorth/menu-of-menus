@@ -1,0 +1,17 @@
+.visibility {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: -1;
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+  z-index: 1;
+}
+
+.full-width {
+  width: 100%;
+}

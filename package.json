@@ -53,6 +53,7 @@
     "react-dom": "16.4.2",
     "react-hot-loader": "4.3.4",
     "react-pose": "^3.2.1",
+    "react-pose-text": "^3.1.0",
     "react-scroll-percentage": "^2.0.0",
     "scroll-into-view-if-needed": "^2.2.16"
   },
