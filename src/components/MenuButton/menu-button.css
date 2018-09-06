@@ -16,17 +16,14 @@
   visibility: hidden;
 }
 
+.is-open,
 .menu-button:hover {
-  border: 4px solid #191919;
   color: #191919;
   background: white;
 }
 
 .show-menu-button {
   opacity: 1;
-  border: unset;
-  background: none;
-  color: unset;
   transition: all 1s ease;
   visibility: visible;
 }

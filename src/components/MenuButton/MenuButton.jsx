@@ -4,9 +4,16 @@ import PropTypes from 'prop-types';
 import style from './menu-button.css';
 import slidein from '../SlideIn/hamburger-to-x.css';
 
-const MenuButton = ({ menuSelected, isMenuSelected, toggleMenu }) => {
+const MenuButton = ({
+  menuSelected,
+  isMenuSelected,
+  isMenuOpen,
+  toggleMenu,
+}) => {
   let buttonStyle;
   let text;
+
+  console.log(isMenuOpen);
 
   if (menuSelected === 'slidein') {
     buttonStyle = [
@@ -18,6 +25,7 @@ const MenuButton = ({ menuSelected, isMenuSelected, toggleMenu }) => {
     buttonStyle = [
       style['menu-button'],
       isMenuSelected && style['show-menu-button'],
+      isMenuOpen && style['is-open'],
     ];
     text = 'Menu';
   }
@@ -38,6 +46,7 @@ const MenuButton = ({ menuSelected, isMenuSelected, toggleMenu }) => {
 
 MenuButton.propTypes = {
   isMenuSelected: PropTypes.bool,
+  isMenuOpen: PropTypes.bool,
   menuSelected: PropTypes.string,
   toggleMenu: PropTypes.func.isRequired,
 };

@@ -90,12 +90,14 @@ class App extends Component {
 
   render() {
     const { menuSelected, menuOpen } = this.state;
+    console.log('menuOpen', menuOpen);
     return (
       <div className={style.page}>
         <MenuButton
           isMenuSelected={menuSelected && true}
           menuSelected={menuSelected}
           toggleMenu={this.onToggleMenu}
+          isMenuOpen={menuOpen && true}
         />
         <Intro />
 
