@@ -21,7 +21,7 @@ ul {
 
 .page {
   background: #1372fb;
-  margin: 40px;
+  margin: 60px 220px;
   border-radius: 4px;
 }
 
@@ -30,8 +30,6 @@ ul {
   list-style: none;
   width: 100%;
   text-align: center;
-
-  margin-top: 40vh;
 }
 
 .menu {

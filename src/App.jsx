@@ -19,6 +19,7 @@ class App extends Component {
     this.state = {
       menuSelected: null,
       menuOpen: false,
+      inputWasSpace: null,
     };
 
     this.curtainofblocks = React.createRef();
@@ -56,12 +57,16 @@ class App extends Component {
     if (e.code === 'Space') {
       e.preventDefault();
       if (menuSelected) {
-        this.onToggleMenu();
+        this.onToggleMenu('inputWasSpace');
       }
     }
   };
 
-  onToggleMenu = () => {
+  onToggleMenu = input => {
+    console.log('input?', input);
+    if (input) this.setState({ inputWasSpace: true });
+    else this.setState({ inputWasSpace: false });
+
     this.handleBlockScroll();
 
     this.setState(prevState => ({
@@ -89,7 +94,7 @@ class App extends Component {
   };
 
   render() {
-    const { menuSelected, menuOpen } = this.state;
+    const { menuSelected, menuOpen, inputWasSpace } = this.state;
 
     return (
       <div className={style.page}>
@@ -99,7 +104,11 @@ class App extends Component {
           toggleMenu={this.onToggleMenu}
           isMenuOpen={menuOpen && true}
         />
-        <Intro onScrollTo={this.handleScrollTo} />
+        <Intro
+          onScrollTo={this.handleScrollTo}
+          onToggleMenu={this.onToggleMenu}
+          inputWasSpace={inputWasSpace && true}
+        />
 
         <ul className={style['list-of-menus']}>
           {menus.map(menu => (
