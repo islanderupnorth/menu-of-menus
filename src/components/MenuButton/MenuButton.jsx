@@ -33,7 +33,7 @@ const MenuButton = ({
       {menuSelected === 'slidein' && (
         <div className={slidein.hamburger}>
           <span />
-          <span style={{ left: 0, top: 9 }} />
+          <span style={{ left: 6, top: 6 }} />
           <span />
         </div>
       )}

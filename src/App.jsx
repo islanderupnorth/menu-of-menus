@@ -3,6 +3,7 @@ import scrollIntoView from 'scroll-into-view-if-needed';
 import { hot } from 'react-hot-loader';
 // import ScrollPercentage from 'react-scroll-percentage';
 import cn from 'classnames';
+import { animateScroll as scroll } from 'react-scroll';
 import style from './styles/global.css';
 import MenuButton from './components/MenuButton/MenuButton';
 import CurtainOfBlocks from './components/CurtainOfBlocks/CurtainOfBlocks';
@@ -19,9 +20,10 @@ class App extends Component {
     this.state = {
       menuSelected: null,
       menuOpen: false,
-      inputWasSpace: null,
+      animateSpacebarPress: null,
     };
 
+    this.page = React.createRef();
     this.curtainofblocks = React.createRef();
     this.slidein = React.createRef();
     this.proximity = React.createRef();
@@ -32,6 +34,13 @@ class App extends Component {
 
   componentDidMount = () => {
     document.addEventListener('keydown', e => this.handleKeyboard(e));
+  };
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevState.animateSpacebarPress)
+      setTimeout(() => {
+        this.setState({ animateSpacebarPress: false });
+      }, 300);
   };
 
   handleChangeOption = e => {
@@ -57,15 +66,15 @@ class App extends Component {
     if (e.code === 'Space') {
       e.preventDefault();
       if (menuSelected) {
-        this.onToggleMenu('inputWasSpace');
+        this.onToggleMenu('animateSpacebarPress');
       }
     }
   };
 
   onToggleMenu = input => {
-    console.log('input?', input);
-    if (input) this.setState({ inputWasSpace: true });
-    else this.setState({ inputWasSpace: false });
+    if (input === 'animateSpacebarPress')
+      this.setState({ animateSpacebarPress: true });
+    else this.setState({ animateSpacebarPress: false });
 
     this.handleBlockScroll();
 
@@ -75,29 +84,44 @@ class App extends Component {
   };
 
   handleScrollTo = direction => {
-    const { menuSelected } = this.state;
-    if (direction === 'ArrowDown' && menuSelected) {
-      if (count <= menus.length - 2) count += 1;
-      this.setState({ menuSelected: menus[count].selectName });
-    }
-    if (direction === 'ArrowUp' && menuSelected) {
-      if (count > 0) count -= 1;
-      this.setState({ menuSelected: menus[count].selectName });
-    }
-    if (!menuSelected) this.setState({ menuSelected: menus[0].selectName });
+    const { menuSelected, menuOpen } = this.state;
 
-    const node = this[menuSelected || 'curtainofblocks'].current;
-    scrollIntoView(node, {
-      behavior: 'smooth',
-      scrollMode: 'if-needed',
-    });
+    // if (direction === 'ArrowUp' && !menuSelected) return;
+
+    if (direction === 'ArrowUp' && menuSelected === menus[0].selectName) {
+      this.setState({ menuSelected: null });
+      scroll.scrollToTop({ duration: 600 });
+      return;
+    }
+
+    if (!menuOpen && menuSelected) {
+      if (direction === 'ArrowDown') {
+        if (count <= menus.length - 2) count += 1;
+        this.setState({ menuSelected: menus[count].selectName });
+      }
+
+      if (direction === 'ArrowUp') {
+        if (count > 0) count -= 1;
+        this.setState({ menuSelected: menus[count].selectName });
+      }
+    }
+
+    if (direction !== 'ArrowUp' && !menuSelected) {
+      this.setState({ menuSelected: menus[0].selectName });
+
+      const node = this[menuSelected || menus[0].selectName].current;
+      scrollIntoView(node, {
+        behavior: 'smooth',
+        scrollMode: 'if-needed',
+      });
+    }
   };
 
   render() {
-    const { menuSelected, menuOpen, inputWasSpace } = this.state;
+    const { menuSelected, menuOpen, animateSpacebarPress } = this.state;
 
     return (
-      <div className={style.page}>
+      <div className={style.page} ref={this.page}>
         <MenuButton
           isMenuSelected={menuSelected && true}
           menuSelected={menuSelected}
@@ -107,7 +131,7 @@ class App extends Component {
         <Intro
           onScrollTo={this.handleScrollTo}
           onToggleMenu={this.onToggleMenu}
-          inputWasSpace={inputWasSpace && true}
+          animateSpacebarPress={animateSpacebarPress && true}
         />
 
         <ul className={style['list-of-menus']}>
@@ -132,14 +156,28 @@ class App extends Component {
           ))}
         </ul>
 
-        <CurtainOfBlocks
-          showMenu={menuSelected === 'curtainofblocks' && menuOpen && true}
-        />
-        <SlideIn
-          showMenu={menuSelected === 'slidein' && menuOpen && true}
-          handleToggleMenu={this.onToggleMenu}
-        />
-        {/* <SlideIn showMenu /> */}
+        {menuSelected === 'slidein' && (
+          <SlideIn
+            showMenu={menuSelected === 'slidein' && menuOpen && true}
+            handleToggleMenu={this.onToggleMenu}
+          />
+        )}
+        {menuSelected === 'curtainofblocks' && (
+          <CurtainOfBlocks
+            showMenu={menuSelected === 'curtainofblocks' && menuOpen && true}
+          />
+        )}
+
+        {/* Have mouse fontawesome mouse icon @keyframes move from left to right few times to demonstate action required
+        <Proximity /> */}
+        <p>🙏</p>
+        <p>I like you, you made it to here!</p>
+        <p>I hope you enjoyed the menus as much as I did creating them!</p>
+        <p>🤓</p>
+        <p>
+          Hit that space bar one last time to see credit (fixed on top like
+          menus)
+        </p>
       </div>
     );
   }

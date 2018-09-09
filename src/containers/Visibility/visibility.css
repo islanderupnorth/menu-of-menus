@@ -3,12 +3,11 @@
   top: 0;
   left: 0;
   height: 100%;
-  z-index: -1;
-  visibility: hidden;
+  pointer-events: none;
 }
 
 .visible {
-  visibility: visible;
+  pointer-events: unset;
   z-index: 1;
 }
 

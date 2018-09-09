@@ -13,7 +13,7 @@ const charPoses = {
   },
 };
 
-const Intro = ({ onScrollTo, onToggleMenu, inputWasSpace }) => (
+const Intro = ({ onScrollTo, onToggleMenu, animateSpacebarPress }) => (
   <section className={style.header}>
     <h1 className={style.welcome}>Welcome to</h1>
     <h1 className={style.title}>
@@ -26,7 +26,7 @@ const Intro = ({ onScrollTo, onToggleMenu, inputWasSpace }) => (
     <KeyboardOnboarding
       onScrollTo={onScrollTo}
       onToggleMenu={onToggleMenu}
-      inputWasSpace={inputWasSpace && inputWasSpace}
+      animateSpacebarPress={animateSpacebarPress && true}
     />
   </section>
 );
@@ -34,7 +34,7 @@ const Intro = ({ onScrollTo, onToggleMenu, inputWasSpace }) => (
 Intro.propTypes = {
   onScrollTo: PropTypes.func,
   onToggleMenu: PropTypes.func,
-  inputWasSpace: PropTypes.bool,
+  animateSpacebarPress: PropTypes.bool,
 };
 
 export default Intro;

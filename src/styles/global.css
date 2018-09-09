@@ -13,6 +13,7 @@ body {
   min-width: 100vw;
   color: $white;
   background-color: #191919;
+  display: unset;
 }
 
 ul {

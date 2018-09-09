@@ -9,26 +9,26 @@ import Visibility from '../../containers/Visibility/Visibility';
 
 class BlockCurtains extends React.Component {
   state = {
-    active: false,
+    animationState: null,
   };
 
-  handleHover = () => {
+  handleOnAnimationComplete = () => {
     const { showMenu } = this.props;
 
-    if (showMenu) this.setState({ active: true });
-    else this.setState({ active: false });
+    if (showMenu) this.setState({ animationState: 'hasOpened' });
+    else this.setState({ animationState: 'hasClosed' });
   };
 
   render() {
-    const { active } = this.state;
+    const { animationState } = this.state;
     const { showMenu } = this.props;
 
     return (
-      <Visibility visible={(showMenu || active) && true} fullWidth>
+      <Visibility visible={showMenu && true} fullWidth>
         <Grid
           className={cn(style['curtain-of-blocks'])}
           pose={showMenu ? 'open' : 'closed'}
-          onPoseComplete={this.handleHover}
+          onPoseComplete={this.handleOnAnimationComplete}
         >
           {content.map(item => (
             <li key={item.icon} className={style.li}>
@@ -36,7 +36,9 @@ class BlockCurtains extends React.Component {
                 <Card
                   className={cn(
                     style.content,
-                    active && showMenu && style['can-hover'],
+                    animationState === 'hasOpened' &&
+                      showMenu &&
+                      style['can-hover'],
                   )}
                 >
                   <FontAwesomeIcon className={style.icon} icon={item.icon} />

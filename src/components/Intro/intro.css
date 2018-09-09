@@ -14,23 +14,14 @@
 }
 
 .welcome {
-  font-size: 48px;
+  font-size: 34px;
   font-weight: 400;
+  margin-bottom: 16px;
 }
 
 .title {
-  font-size: 78px;
+  font-size: 54px;
   color: #fae935;
   font-weight: 700;
   line-height: 1;
-}
-
-.description {
-  margin-top: 50px;
-  font-size: 18px;
-}
-
-.emojis {
-  margin-top: 10px;
-  font-size: 80px;
 }
